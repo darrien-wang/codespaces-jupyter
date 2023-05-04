@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ebooklib.plugins.standard &mdash; EbookLib 0.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://docs.sourcefabric.org/projects/ebooklib/en/latest/_modules/ebooklib/plugins/standard.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="../../../_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = '_modules/ebooklib/plugins/standard'
+</script>
+
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-analytics.js"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> EbookLib
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ebooklib.html">ebooklib Package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EbookLib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>ebooklib.plugins.standard</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ebooklib.plugins.standard</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This file is part of EbookLib.</span>
+<span class="c1"># Copyright (c) 2013 Aleksandar Erkalovic &lt;aerkalov@gmail.com&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># EbookLib is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU Affero General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># EbookLib is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1"># along with EbookLib.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">ebooklib.plugins.base</span> <span class="k">import</span> <span class="n">BasePlugin</span>
+<span class="kn">from</span> <span class="nn">ebooklib.utils</span> <span class="k">import</span> <span class="n">parse_html_string</span>
+
+<span class="c1"># TODO:</span>
+<span class="c1">#   - should also look for the _required_ elements</span>
+<span class="c1"># http://www.w3.org/html/wg/drafts/html/master/tabular-data.html#the-table-element</span>
+
+<span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;accesskey&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="s1">&#39;contenteditable&#39;</span><span class="p">,</span> <span class="s1">&#39;contextmenu&#39;</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="s1">&#39;draggable&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;dropzone&#39;</span><span class="p">,</span> <span class="s1">&#39;hidden&#39;</span><span class="p">,</span>  <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;inert&#39;</span><span class="p">,</span> <span class="s1">&#39;itemid&#39;</span><span class="p">,</span> <span class="s1">&#39;itemprop&#39;</span><span class="p">,</span> <span class="s1">&#39;itemref&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;itemscope&#39;</span><span class="p">,</span> <span class="s1">&#39;itemtype&#39;</span><span class="p">,</span> <span class="s1">&#39;lang&#39;</span><span class="p">,</span> <span class="s1">&#39;spellcheck&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;tabindex&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;translate&#39;</span><span class="p">,</span> <span class="s1">&#39;epub:type&#39;</span><span class="p">]</span>
+
+<span class="c1"># Remove &lt;u&gt; for now from here</span>
+<span class="n">DEPRECATED_TAGS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;acronym&#39;</span><span class="p">,</span> <span class="s1">&#39;applet&#39;</span><span class="p">,</span> <span class="s1">&#39;basefont&#39;</span><span class="p">,</span> <span class="s1">&#39;big&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="s1">&#39;frame&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;frameset&#39;</span><span class="p">,</span> <span class="s1">&#39;isindex&#39;</span><span class="p">,</span> <span class="s1">&#39;noframes&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;strike&#39;</span><span class="p">,</span> <span class="s1">&#39;tt&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="leave_only"><a class="viewcode-back" href="../../../ebooklib.plugins.html#ebooklib.plugins.standard.leave_only">[docs]</a><span class="k">def</span> <span class="nf">leave_only</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">tag_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="n">six</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">attrib</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">_attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tag_list</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">item</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="n">_attr</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="SyntaxPlugin"><a class="viewcode-back" href="../../../ebooklib.plugins.html#ebooklib.plugins.standard.SyntaxPlugin">[docs]</a><span class="k">class</span> <span class="nc">SyntaxPlugin</span><span class="p">(</span><span class="n">BasePlugin</span><span class="p">):</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;Check HTML syntax&#39;</span>
+
+<div class="viewcode-block" id="SyntaxPlugin.html_before_write"><a class="viewcode-back" href="../../../ebooklib.plugins.html#ebooklib.plugins.standard.SyntaxPlugin.html_before_write">[docs]</a>    <span class="k">def</span> <span class="nf">html_before_write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">book</span><span class="p">,</span> <span class="n">chapter</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">parse_html_string</span><span class="p">(</span><span class="n">chapter</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroottree</span><span class="p">()</span>
+
+        <span class="c1"># delete deprecated tags</span>
+        <span class="c1"># i should really have a list of allowed tags</span>
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">DEPRECATED_TAGS</span><span class="p">:</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">strip_tags</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
+
+        <span class="n">head</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            
+            <span class="k">for</span> <span class="n">_item</span> <span class="ow">in</span> <span class="n">head</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;base&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;link&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;crossorigin&#39;</span><span class="p">,</span> <span class="s1">&#39;rel&#39;</span><span class="p">,</span> <span class="s1">&#39;media&#39;</span><span class="p">,</span> <span class="s1">&#39;hreflang&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;sizes&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                        <span class="n">head</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">_item</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;meta&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;http-equiv&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;charset&#39;</span><span class="p">])</span>
+                    <span class="c1"># just remove for now, but really should not be like this</span>
+                    <span class="n">head</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">_item</span><span class="p">)</span> 
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;script&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;charset&#39;</span><span class="p">,</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span> <span class="s1">&#39;defer&#39;</span><span class="p">,</span> <span class="s1">&#39;crossorigin&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;source&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;media&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;style&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;media&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;scoped&#39;</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">_item</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">iter</span><span class="p">():</span>
+                <span class="c1"># it is not</span>
+                <span class="c1"># &lt;a class=&quot;indexterm&quot; href=&quot;ch05.html#ix_epub:trigger_element&quot;&gt;</span>
+                
+                <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="s1">&#39;rel&#39;</span><span class="p">,</span> <span class="s1">&#39;hreflang&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;area&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="s1">&#39;coords&#39;</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;download&#39;</span><span class="p">,</span> <span class="s1">&#39;rel&#39;</span><span class="p">,</span> <span class="s1">&#39;hreflang&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;audio&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;crossorigin&#39;</span><span class="p">,</span> <span class="s1">&#39;preload&#39;</span><span class="p">,</span> <span class="s1">&#39;autoplay&#39;</span><span class="p">,</span> <span class="s1">&#39;mediagroup&#39;</span><span class="p">,</span> <span class="s1">&#39;loop&#39;</span><span class="p">,</span> <span class="s1">&#39;muted&#39;</span><span class="p">,</span> <span class="s1">&#39;controls&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;blockquote&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;cite&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;button&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;autofocus&#39;</span><span class="p">,</span> <span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;formaction&#39;</span><span class="p">,</span> <span class="s1">&#39;formenctype&#39;</span><span class="p">,</span> <span class="s1">&#39;formmethod&#39;</span><span class="p">,</span> <span class="s1">&#39;formnovalidate&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;formtarget&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;menu&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;canvas&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;canvas&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;del&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;cite&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;details&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;embed&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;fieldset&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;disable&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;details&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;accept-charset&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;enctype&#39;</span><span class="p">,</span> <span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;novalidate&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;iframe&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;srcdoc&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;sandbox&#39;</span><span class="p">,</span> <span class="s1">&#39;seamless&#39;</span><span class="p">,</span> <span class="s1">&#39;allowfullscreen&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;img&#39;</span><span class="p">:</span>
+                    <span class="n">_src</span> <span class="o">=</span>  <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">_src</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">_src</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="s1">&#39;remote-resources&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chapter</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+                            <span class="n">chapter</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;remote-resources&#39;</span><span class="p">)</span>
+                            <span class="c1"># THIS DOES NOT WORK, ONLY VIDEO AND AUDIO FILES CAN BE REMOTE RESOURCES</span>
+                            <span class="c1"># THAT MEANS I SHOULD ALSO CATCH &lt;SOURCE TAG</span>
+                            <span class="kn">from</span> <span class="nn">ebooklib</span> <span class="k">import</span> <span class="n">epub</span>
+                            <span class="n">_img</span> <span class="o">=</span> <span class="n">epub</span><span class="o">.</span><span class="n">EpubImage</span><span class="p">(</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">))</span>
+                            <span class="n">book</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">_img</span><span class="p">)</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;crossorigin&#39;</span><span class="p">,</span> <span class="s1">&#39;usemap&#39;</span><span class="p">,</span> <span class="s1">&#39;ismap&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;input&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;accept&#39;</span><span class="p">,</span> <span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;autofocus&#39;</span><span class="p">,</span> <span class="s1">&#39;checked&#39;</span><span class="p">,</span> <span class="s1">&#39;dirname&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;formaction&#39;</span><span class="p">,</span> <span class="s1">&#39;formenctype&#39;</span><span class="p">,</span> <span class="s1">&#39;formmethod&#39;</span><span class="p">,</span> <span class="s1">&#39;formnovalidate&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;formtarget&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;inputmode&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;maxlength&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;multiple&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;pattern&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">,</span> <span class="s1">&#39;readonly&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span>
+                                                           <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;ins&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;cite&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;keygen&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;autofocus&#39;</span><span class="p">,</span> <span class="s1">&#39;challenge&#39;</span><span class="p">,</span> <span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;keytype&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;map&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;menu&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;typemustmatch&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;usemap&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;ol&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;reversed&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;optgroup&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;option&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;selected&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;output&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;param&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;progress&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;cite&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;select&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;autofocus&#39;</span><span class="p">,</span> <span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span> <span class="s1">&#39;multiple&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">])</span>
+
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;border&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;border&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+                            <span class="n">_item</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;border&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                        <span class="n">_caption</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">&#39;caption&#39;</span><span class="p">,</span> <span class="p">{})</span>
+                        <span class="n">_caption</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;summary&#39;</span><span class="p">)</span>
+                        <span class="n">_item</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_caption</span><span class="p">)</span>
+
+                        <span class="c1"># add it as caption</span>
+                        <span class="k">del</span> <span class="n">_item</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span>
+
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;border&#39;</span><span class="p">,</span> <span class="s1">&#39;sortable&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;dl&#39;</span><span class="p">:</span>
+                    <span class="n">_d</span> <span class="o">=</span> <span class="n">_item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;dd&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">_d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">_d</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">pass</span>
+
+                        <span class="c1"># http://html5doctor.com/the-dl-element/</span>
+                        <span class="c1"># should be like this really</span>
+                        <span class="c1"># some of the elements can be missing</span>
+                        <span class="c1"># dl</span>
+                        <span class="c1">#   dt</span>
+                        <span class="c1">#   dd</span>
+                        <span class="c1">#   dt</span>
+                        <span class="c1">#   dd</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;td&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;colspan&#39;</span><span class="p">,</span> <span class="s1">&#39;rowspan&#39;</span><span class="p">,</span> <span class="s1">&#39;headers&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;textarea&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;autocomplete&#39;</span><span class="p">,</span> <span class="s1">&#39;autofocus&#39;</span><span class="p">,</span> <span class="s1">&#39;cols&#39;</span><span class="p">,</span> <span class="s1">&#39;dirname&#39;</span><span class="p">,</span> <span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="s1">&#39;form&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;inputmode&#39;</span><span class="p">,</span> <span class="s1">&#39;maxlength&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span><span class="p">,</span> <span class="s1">&#39;readonly&#39;</span><span class="p">,</span> <span class="s1">&#39;required&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;rows&#39;</span><span class="p">,</span> <span class="s1">&#39;wrap&#39;</span><span class="p">])</span>
+
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="s1">&#39;colgroup&#39;</span><span class="p">]:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;span&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;th&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;colspan&#39;</span><span class="p">,</span> <span class="s1">&#39;rowspan&#39;</span><span class="p">,</span> <span class="s1">&#39;headers&#39;</span><span class="p">,</span> <span class="s1">&#39;scope&#39;</span><span class="p">,</span> <span class="s1">&#39;abbr&#39;</span><span class="p">,</span> <span class="s1">&#39;sorted&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;track&#39;</span><span class="p">]:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;srclang&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;video&#39;</span><span class="p">:</span>
+                    <span class="n">leave_only</span><span class="p">(</span><span class="n">_item</span><span class="p">,</span> <span class="n">ATTRIBUTES_GLOBAL</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;crossorigin&#39;</span><span class="p">,</span> <span class="s1">&#39;poster&#39;</span><span class="p">,</span> <span class="s1">&#39;preload&#39;</span><span class="p">,</span> <span class="s1">&#39;autoplay&#39;</span><span class="p">,</span> <span class="s1">&#39;mediagroup&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;loop&#39;</span><span class="p">,</span> <span class="s1">&#39;muted&#39;</span><span class="p">,</span> <span class="s1">&#39;controls&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">_item</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;svg&#39;</span><span class="p">:</span>
+                    <span class="c1"># We need to add property &quot;svg&quot; in case we have embeded svg file</span>
+                    <span class="k">if</span> <span class="s1">&#39;svg&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chapter</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+                        <span class="n">chapter</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+                        
+                    <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;viewbox&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                        <span class="k">del</span> <span class="n">_item</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;viewbox&#39;</span><span class="p">]</span>
+
+                    <span class="k">if</span> <span class="n">_item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;preserveaspectratio&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+                        <span class="k">del</span> <span class="n">_item</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s1">&#39;preserveaspectratio&#39;</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">_attr</span> <span class="ow">in</span> <span class="n">six</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">(</span><span class="n">_item</span><span class="o">.</span><span class="n">attrib</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">_attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ATTRIBUTES_GLOBAL</span><span class="p">:</span>
+                            <span class="k">del</span> <span class="n">_item</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="n">_attr</span><span class="p">]</span>
+
+        <span class="n">chapter</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">pretty_print</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">xml_declaration</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">chapter</span><span class="o">.</span><span class="n">content</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Aleksandar Erkalovic.
+      
+        <span class="commit">
+          Revision <code>6a004d4a</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/ebooklib/?fromdocs=ebooklib">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/ebooklib/?fromdocs=ebooklib">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.17',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plugins Package &mdash; EbookLib 0.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ebooklib Package" href="ebooklib.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://docs.sourcefabric.org/projects/ebooklib/en/latest/ebooklib.plugins.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'ebooklib.plugins'
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-analytics.js"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> EbookLib
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ebooklib.html">ebooklib Package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ebooklib.html#id1"><code class="docutils literal notranslate"><span class="pre">ebooklib</span></code> Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebooklib.html#module-ebooklib.epub"><code class="docutils literal notranslate"><span class="pre">epub</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ebooklib.html#module-ebooklib.utils"><code class="docutils literal notranslate"><span class="pre">utils</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="ebooklib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">plugins Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-ebooklib.plugins.base"><code class="docutils literal notranslate"><span class="pre">base</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ebooklib.plugins.booktype"><code class="docutils literal notranslate"><span class="pre">booktype</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ebooklib.plugins.sourcecode"><code class="docutils literal notranslate"><span class="pre">sourcecode</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ebooklib.plugins.standard"><code class="docutils literal notranslate"><span class="pre">standard</span></code> Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ebooklib.plugins.tidyhtml"><code class="docutils literal notranslate"><span class="pre">tidyhtml</span></code> Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EbookLib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="ebooklib.html">ebooklib Package</a> &raquo;</li>
+        
+      <li>plugins Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/aerkalov/ebooklib/blob/master/docs/ebooklib.plugins.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="plugins-package">
+<h1>plugins Package<a class="headerlink" href="#plugins-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-ebooklib.plugins.base">
+<span id="base-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">base</span></code> Module<a class="headerlink" href="#module-ebooklib.plugins.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ebooklib.plugins.base.BasePlugin">
+<em class="property">class </em><code class="descclassname">ebooklib.plugins.base.</code><code class="descname">BasePlugin</code><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.after_read">
+<code class="descname">after_read</code><span class="sig-paren">(</span><em>book</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.after_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.after_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing after save</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.after_write">
+<code class="descname">after_write</code><span class="sig-paren">(</span><em>book</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.after_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.after_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing after save</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.before_read">
+<code class="descname">before_read</code><span class="sig-paren">(</span><em>book</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.before_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.before_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing before save</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.before_write">
+<code class="descname">before_write</code><span class="sig-paren">(</span><em>book</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing before save</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.html_after_read">
+<code class="descname">html_after_read</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.html_after_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.html_after_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before read.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.html_before_write">
+<code class="descname">html_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.html_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.html_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before save.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.item_after_read">
+<code class="descname">item_after_read</code><span class="sig-paren">(</span><em>book</em>, <em>item</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.item_after_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.item_after_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process general item after read.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.base.BasePlugin.item_before_write">
+<code class="descname">item_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>item</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/base.html#BasePlugin.item_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.base.BasePlugin.item_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process general item before write.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ebooklib.plugins.booktype">
+<span id="booktype-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">booktype</span></code> Module<a class="headerlink" href="#module-ebooklib.plugins.booktype" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ebooklib.plugins.booktype.BooktypeFootnotes">
+<em class="property">class </em><code class="descclassname">ebooklib.plugins.booktype.</code><code class="descname">BooktypeFootnotes</code><span class="sig-paren">(</span><em>booktype_book</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/booktype.html#BooktypeFootnotes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.booktype.BooktypeFootnotes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebooklib.plugins.base.BasePlugin" title="ebooklib.plugins.base.BasePlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.plugins.base.BasePlugin</span></code></a></p>
+<dl class="attribute">
+<dt id="ebooklib.plugins.booktype.BooktypeFootnotes.NAME">
+<code class="descname">NAME</code><em class="property"> = 'Booktype Footnotes'</em><a class="headerlink" href="#ebooklib.plugins.booktype.BooktypeFootnotes.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.booktype.BooktypeFootnotes.html_before_write">
+<code class="descname">html_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/booktype.html#BooktypeFootnotes.html_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.booktype.BooktypeFootnotes.html_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before save.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ebooklib.plugins.booktype.BooktypeLinks">
+<em class="property">class </em><code class="descclassname">ebooklib.plugins.booktype.</code><code class="descname">BooktypeLinks</code><span class="sig-paren">(</span><em>booktype_book</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/booktype.html#BooktypeLinks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.booktype.BooktypeLinks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebooklib.plugins.base.BasePlugin" title="ebooklib.plugins.base.BasePlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.plugins.base.BasePlugin</span></code></a></p>
+<dl class="attribute">
+<dt id="ebooklib.plugins.booktype.BooktypeLinks.NAME">
+<code class="descname">NAME</code><em class="property"> = 'Booktype Links'</em><a class="headerlink" href="#ebooklib.plugins.booktype.BooktypeLinks.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.booktype.BooktypeLinks.html_before_write">
+<code class="descname">html_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/booktype.html#BooktypeLinks.html_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.booktype.BooktypeLinks.html_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before save.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ebooklib.plugins.sourcecode">
+<span id="sourcecode-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">sourcecode</span></code> Module<a class="headerlink" href="#module-ebooklib.plugins.sourcecode" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ebooklib.plugins.sourcecode.SourceHighlighter">
+<em class="property">class </em><code class="descclassname">ebooklib.plugins.sourcecode.</code><code class="descname">SourceHighlighter</code><a class="reference internal" href="_modules/ebooklib/plugins/sourcecode.html#SourceHighlighter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.sourcecode.SourceHighlighter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebooklib.plugins.base.BasePlugin" title="ebooklib.plugins.base.BasePlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.plugins.base.BasePlugin</span></code></a></p>
+<dl class="method">
+<dt id="ebooklib.plugins.sourcecode.SourceHighlighter.html_before_write">
+<code class="descname">html_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/sourcecode.html#SourceHighlighter.html_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.sourcecode.SourceHighlighter.html_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before save.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ebooklib.plugins.standard">
+<span id="standard-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">standard</span></code> Module<a class="headerlink" href="#module-ebooklib.plugins.standard" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ebooklib.plugins.standard.SyntaxPlugin">
+<em class="property">class </em><code class="descclassname">ebooklib.plugins.standard.</code><code class="descname">SyntaxPlugin</code><a class="reference internal" href="_modules/ebooklib/plugins/standard.html#SyntaxPlugin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.standard.SyntaxPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebooklib.plugins.base.BasePlugin" title="ebooklib.plugins.base.BasePlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.plugins.base.BasePlugin</span></code></a></p>
+<dl class="attribute">
+<dt id="ebooklib.plugins.standard.SyntaxPlugin.NAME">
+<code class="descname">NAME</code><em class="property"> = 'Check HTML syntax'</em><a class="headerlink" href="#ebooklib.plugins.standard.SyntaxPlugin.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.standard.SyntaxPlugin.html_before_write">
+<code class="descname">html_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/standard.html#SyntaxPlugin.html_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.standard.SyntaxPlugin.html_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before save.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ebooklib.plugins.standard.leave_only">
+<code class="descclassname">ebooklib.plugins.standard.</code><code class="descname">leave_only</code><span class="sig-paren">(</span><em>item</em>, <em>tag_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/standard.html#leave_only"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.standard.leave_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ebooklib.plugins.tidyhtml">
+<span id="tidyhtml-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">tidyhtml</span></code> Module<a class="headerlink" href="#module-ebooklib.plugins.tidyhtml" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ebooklib.plugins.tidyhtml.TidyPlugin">
+<em class="property">class </em><code class="descclassname">ebooklib.plugins.tidyhtml.</code><code class="descname">TidyPlugin</code><span class="sig-paren">(</span><em>extra={}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/tidyhtml.html#TidyPlugin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.tidyhtml.TidyPlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ebooklib.plugins.base.BasePlugin" title="ebooklib.plugins.base.BasePlugin"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.plugins.base.BasePlugin</span></code></a></p>
+<dl class="attribute">
+<dt id="ebooklib.plugins.tidyhtml.TidyPlugin.NAME">
+<code class="descname">NAME</code><em class="property"> = 'Tidy HTML'</em><a class="headerlink" href="#ebooklib.plugins.tidyhtml.TidyPlugin.NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ebooklib.plugins.tidyhtml.TidyPlugin.OPTIONS">
+<code class="descname">OPTIONS</code><em class="property"> = {'char-encoding': 'utf8', 'tidy-mark': 'no'}</em><a class="headerlink" href="#ebooklib.plugins.tidyhtml.TidyPlugin.OPTIONS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.tidyhtml.TidyPlugin.html_after_read">
+<code class="descname">html_after_read</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/tidyhtml.html#TidyPlugin.html_after_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.tidyhtml.TidyPlugin.html_after_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before read.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ebooklib.plugins.tidyhtml.TidyPlugin.html_before_write">
+<code class="descname">html_before_write</code><span class="sig-paren">(</span><em>book</em>, <em>chapter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/tidyhtml.html#TidyPlugin.html_before_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.tidyhtml.TidyPlugin.html_before_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing HTML before save.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ebooklib.plugins.tidyhtml.tidy_cleanup">
+<code class="descclassname">ebooklib.plugins.tidyhtml.</code><code class="descname">tidy_cleanup</code><span class="sig-paren">(</span><em>content</em>, <em>**extra</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ebooklib/plugins/tidyhtml.html#tidy_cleanup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ebooklib.plugins.tidyhtml.tidy_cleanup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="ebooklib.html" class="btn btn-neutral" title="ebooklib Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Aleksandar Erkalovic.
+      
+        <span class="commit">
+          Revision <code>6a004d4a</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/ebooklib/?fromdocs=ebooklib">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/ebooklib/?fromdocs=ebooklib">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

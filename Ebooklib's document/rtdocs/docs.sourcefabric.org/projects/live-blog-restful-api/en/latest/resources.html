@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Resources &mdash; Live Blog RESTful API 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+
+  
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Live Blog RESTful API 0.1 documentation" href="index.html"/>
+        <link rel="prev" title="Authentication" href="authentication.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://docs.sourcefabric.org/projects/live-blog-restful-api/en/latest/resources.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'resources' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="_static/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Live Blog RESTful API
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Live Blog API Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#blogs">Blogs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#posts">Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#users">Users</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Live Blog RESTful API</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Resources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/superdesk/live-blog-docs/blob/master/./resources.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="resources">
+<span id="id1"></span><h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
+<dl class="get">
+<dt id="get--resources">
+<code class="descname">GET </code><code class="descname">/resources</code><a class="headerlink" href="#get--resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>See a complete list of resources available on the server.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;Resources&gt;</span>
+  <span class="nt">&lt;AdminComponent</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/Component/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdminFile</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/File/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdminInput</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/Input/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdminMessage</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/Message/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdminPlugin</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/Plugin/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdminRequest</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/Request/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AdminSource</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Admin/Source/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveAudioData</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/AudioData/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveAudioInfo</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/AudioInfo/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveImageData</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/ImageData/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveImageInfo</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/ImageInfo/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveMetaData</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/MetaData/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveMetaDataInfoQuery</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/MetaDataInfo/Query&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveMetaInfo</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/MetaInfo/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveMetaType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/MetaType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveQueryCriteria</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/QueryCriteria/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveVideoData</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/VideoData/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ArchiveVideoInfo</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Archive/VideoInfo/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataCollaborator</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/Collaborator/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataPost</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/Post/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataPostPublished</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/Post/Published&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataPostType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/PostType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataPostUnpublished</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/Post/Unpublished&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataSource</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/Source/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DataSourceType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Data/SourceType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;GUIAction</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/GUI/Action/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Gateway</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Gateway/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;GatewayCaptcha</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Gateway/Captcha&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;HRPerson</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/Person/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;HRUser</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;HRUserType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/UserType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskBlog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskBlogCollaboratorType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/BlogCollaboratorType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskBlogLive</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/Live&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskBlogMediaType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/BlogMediaType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskBlogTheme</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/BlogTheme/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskBlogType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/BlogType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LiveDeskSync</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Sync/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LocalizationLanguage</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Localization/Language/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LocalizationLanguageAvailable</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Localization/Language/Available&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;RBACRole</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/RBAC/Role/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;SecurityRight</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Security/Right/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;SecurityRightType</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Security/RightType/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToolURLInfo</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Tool/URLInfo/&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Resources&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="blogs">
+<h2>Blogs<a class="headerlink" href="#blogs" title="Permalink to this headline">¶</a></h2>
+<p>Resources related to Blogs.</p>
+<dl class="get">
+<dt id="get--resources-LiveDesk-Blog">
+<code class="descname">GET </code><code class="descname">/resources/LiveDesk/Blog</code><a class="headerlink" href="#get--resources-LiveDesk-Blog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists available blogs.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources/LiveDesk/Blog</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;BlogList</span> <span class="na">total=</span><span class="s">&quot;5&quot;</span> <span class="na">limit=</span><span class="s">&quot;5&quot;</span> <span class="na">offset=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/3&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/5&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/BlogList&gt;</span>
+</pre></div>
+</div>
+<p>Get a complete list of parameters by adding <code class="docutils literal"><span class="pre">&amp;params=show</span></code> to your request.</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--resources-HR-User-(int-id)-Blog">
+<code class="descname">GET </code><code class="descname">/resources/HR/User/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><code class="descname">/Blog</code><a class="headerlink" href="#get--resources-HR-User-(int-id)-Blog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists blogs assigned to user <cite>id</cite>.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources/HR/User/5/Blog</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;BlogList</span> <span class="na">total=</span><span class="s">&quot;1&quot;</span> <span class="na">limit=</span><span class="s">&quot;1&quot;</span> <span class="na">offset=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/BlogList&gt;</span>
+</pre></div>
+</div>
+<p>Get a complete list of parameters by adding <code class="docutils literal"><span class="pre">&amp;params=show</span></code> to your request.</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--resources-HR-User-(int-id)-Blog-Live">
+<code class="descname">GET </code><code class="descname">/resources/HR/User/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><code class="descname">/Blog/Live</code><a class="headerlink" href="#get--resources-HR-User-(int-id)-Blog-Live" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists live blogs assigned to user <cite>id</cite>.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources/HR/User/5/Blog/Live</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;BlogList&gt;</span>
+  <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/2&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/BlogList&gt;</span>
+</pre></div>
+</div>
+<p>Get a complete list of parameters by adding <code class="docutils literal"><span class="pre">&amp;params=show</span></code> to your request.</p>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--resources-LiveDesk-Blog-(int-id)">
+<code class="descname">GET </code><code class="descname">/resources/LiveDesk/Blog/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--resources-LiveDesk-Blog-(int-id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows information about Blog <cite>id</cite>.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources/LiveDesk/Blog/4</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;Blog&gt;</span>
+  <span class="nt">&lt;Id&gt;</span>4<span class="nt">&lt;/Id&gt;</span>
+  <span class="nt">&lt;IsLive&gt;</span>False<span class="nt">&lt;/IsLive&gt;</span>
+  <span class="nt">&lt;Description&gt;</span><span class="ni">&amp;lt;</span>span class=&quot;placeholder&quot;<span class="ni">&amp;gt;</span>and some description<span class="ni">&amp;lt;</span>span style=&quot;display: none;&quot; sel-id=&quot;sel-1373981816301-18497082770598405&quot;<span class="ni">&amp;gt;</span>﻿<span class="ni">&amp;lt;</span>/span<span class="ni">&amp;gt;&amp;lt;</span>/span<span class="ni">&amp;gt;</span><span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;Title&gt;</span>Test live blog to reproduce duplication of republished wrap-up posts<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;CreatedOn&gt;</span>7/15/13 4:58 PM<span class="nt">&lt;/CreatedOn&gt;</span>
+  <span class="nt">&lt;UpdatedOn&gt;</span>6/18/13 2:53 PM<span class="nt">&lt;/UpdatedOn&gt;</span>
+  <span class="nt">&lt;Creator</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Id&gt;</span>2<span class="nt">&lt;/Id&gt;</span>
+  <span class="nt">&lt;/Creator&gt;</span>
+  <span class="nt">&lt;Language</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/Localization/Language/3&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Id&gt;</span>3<span class="nt">&lt;/Id&gt;</span>
+  <span class="nt">&lt;/Language&gt;</span>
+  <span class="nt">&lt;Type</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/BlogType/2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Id&gt;</span>2<span class="nt">&lt;/Id&gt;</span>
+  <span class="nt">&lt;/Type&gt;</span>
+  <span class="nt">&lt;Collaborator</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Collaborator/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;CollaboratorPotential</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Collaborator/Potential&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Sync</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Sync/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Configuration</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Configuration/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Post</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Post/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;PostComment</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Post/Comment&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;PostPublished</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Post/Published&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;PostUnpublished</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Post/Unpublished&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;CommentPost</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Comment/Post/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Source</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Source/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;BlogMedia</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/BlogMedia/&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Blog&gt;</span>
+</pre></div>
+</div>
+<p>Get a complete list of parameters by adding <code class="docutils literal"><span class="pre">&amp;params=show</span></code> to your request.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="posts">
+<h2>Posts<a class="headerlink" href="#posts" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--resources-LiveDesk-Blog-(int-id)-Post-Published">
+<code class="descname">GET </code><code class="descname">/resources/LiveDesk/Blog/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><code class="descname">/Post/Published</code><a class="headerlink" href="#get--resources-LiveDesk-Blog-(int-id)-Post-Published" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows all published posts on Blog <cite>id</cite>.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources/LiveDesk/Blog/4/Post/Published</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;PostList</span> <span class="na">offsetMore=</span><span class="s">&quot;2&quot;</span> <span class="na">total=</span><span class="s">&quot;2&quot;</span> <span class="na">limit=</span><span class="s">&quot;2&quot;</span> <span class="na">lastCId=</span><span class="s">&quot;191&quot;</span> <span class="na">offset=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Post</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Post/73&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Post</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/LiveDesk/Blog/4/Post/72&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/PostList&gt;</span>
+</pre></div>
+</div>
+<p>Get a complete list of parameters by adding <code class="docutils literal"><span class="pre">&amp;params=show</span></code> to your request.</p>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--resources-LiveDesk-Blog-(int-id)-Post">
+<code class="descname">POST </code><code class="descname">/resources/LiveDesk/Blog/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><code class="descname">/Post</code><a class="headerlink" href="#post--resources-LiveDesk-Blog-(int-id)-Post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a post into Blog <cite>id</cite>, but do not publish it.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/resources/LiveDesk/Blog/4/Post/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request Headers:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://tools.ietf.org/html/rfc7235#section-4.2">Authorization</a> &#8211; Session authorization token, see <a class="reference internal" href="authentication.html#authentication"><span class="std std-ref">Authentication</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="post">
+<dt id="post--resources-LiveDesk-Blog-(int-id)-Post-Publish">
+<code class="descname">POST </code><code class="descname">/resources/LiveDesk/Blog/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><code class="descname">/Post/Publish</code><a class="headerlink" href="#post--resources-LiveDesk-Blog-(int-id)-Post-Publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a post into Blog <cite>id</cite> and publish it immediately.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/resources/LiveDesk/Blog/4/Post/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Request Headers:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><a class="reference external" href="http://tools.ietf.org/html/rfc7235#section-4.2">Authorization</a> &#8211; Session authorization token, see <a class="reference internal" href="authentication.html#authentication"><span class="std std-ref">Authentication</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="users">
+<h2>Users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--resources-HR-User-(int-id)">
+<code class="descname">GET </code><code class="descname">/resources/HR/User/</code><span class="sig-paren">(</span><em class="property">int: </em><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#get--resources-HR-User-(int-id)" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show information about user <cite>id</cite>.</p>
+<p><strong>Example Request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/resources/HR/User/5</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">http://doc.sd-demo.sourcefabric.org</span>
+</pre></div>
+</div>
+<p><strong>Example Response</strong>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;User&gt;</span>
+  <span class="nt">&lt;Id&gt;</span>5<span class="nt">&lt;/Id&gt;</span>
+  <span class="nt">&lt;Active&gt;</span>True<span class="nt">&lt;/Active&gt;</span>
+  <span class="nt">&lt;EMail&gt;</span>Sarah.Stringer@email.addr<span class="nt">&lt;/EMail&gt;</span>
+  <span class="nt">&lt;FirstName&gt;</span>Sarah<span class="nt">&lt;/FirstName&gt;</span>
+  <span class="nt">&lt;FullName&gt;</span>Sarah Stringer<span class="nt">&lt;/FullName&gt;</span>
+  <span class="nt">&lt;LastName&gt;</span>Stringer<span class="nt">&lt;/LastName&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>stringer<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;CreatedOn&gt;</span>7/2/13 11:43 AM<span class="nt">&lt;/CreatedOn&gt;</span>
+  <span class="nt">&lt;Type</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/UserType/standard&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Key&gt;</span>standard<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;/Type&gt;</span>
+  <span class="nt">&lt;Role</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Role/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Right</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Right/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Blog</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Blog/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;BlogLive</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Blog/Live&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Action</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Action/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Post</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Post/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;PostPublished</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Post/Published&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;PostUnpublished</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Post/Unpublished&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Collaborator</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/User/5/Collaborator/&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;MetaDataIcon</span> <span class="na">href=</span><span class="s">&quot;http://doc.sd-demo.sourcefabric.org/resources/HR/Person/5/MetaData/Icon&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/User&gt;</span>
+</pre></div>
+</div>
+<p>Get a complete list of parameters by adding <code class="docutils literal"><span class="pre">&amp;params=show</span></code> to your request.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="authentication.html" class="btn btn-neutral" title="Authentication" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, Sourcefabric.
+      
+        <span class="commit">
+          Revision <code>ec34a8df</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//readthedocs.org/projects/live-blog-restful-api/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/live-blog-restful-api/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/live-blog-restful-api/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/live-blog-restful-api/?fromdocs=live-blog-restful-api">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/live-blog-restful-api/?fromdocs=live-blog-restful-api">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

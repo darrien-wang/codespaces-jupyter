@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial &mdash; EbookLib 0.17 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plugins" href="plugins.html" />
+    <link rel="prev" title="Welcome to EbookLib’s documentation!" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://docs.sourcefabric.org/projects/ebooklib/en/latest/tutorial.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'tutorial'
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-analytics.js"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> EbookLib
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-epub">Reading EPUB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#items">Items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-epub">Creating EPUB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#samples">Samples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ebooklib.html">ebooklib Package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EbookLib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/aerkalov/ebooklib/blob/master/docs/tutorial.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Ebooklib is used to manage EPUB2/EPUB3 files.</p>
+</div>
+<div class="section" id="reading-epub">
+<h2>Reading EPUB<a class="headerlink" href="#reading-epub" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ebooklib</span>
+<span class="kn">from</span> <span class="nn">ebooklib</span> <span class="k">import</span> <span class="n">epub</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">epub</span><span class="o">.</span><span class="n">read_epub</span><span class="p">(</span><span class="s1">&#39;test.epub&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is a <a class="reference internal" href="ebooklib.html#ebooklib.epub.read_epub" title="ebooklib.epub.read_epub"><code class="xref py py-func docutils literal notranslate"><span class="pre">ebooklib.epub.read_epub()</span></code></a> function used for reading EPUB files. It accepts full file path to the
+EPUB file as argument. It will return instance of <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook" title="ebooklib.epub.EpubBook"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook</span></code></a> class.</p>
+<div class="section" id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h3>
+<p>Method <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook.get_metadata" title="ebooklib.epub.EpubBook.get_metadata"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook.get_metadata()</span></code></a> is used for fetching metadata. It accepts 2 arguments. First argument
+is name of the namespace (‘DC’ for Dublin Core and ‘OPF’ for custom metadata). Second argument is name of the key.
+It always returns a list. List will be empty if nothing is defined for that key.</p>
+<p>Minimal required metadata from Dublic Core set (for EPUB3) is:</p>
+<ul class="simple">
+<li>DC:identifier</li>
+<li>DC:title</li>
+<li>DC:language</li>
+</ul>
+<p>‘DC’ namespace is used when accessing Dublin Core metadata.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">)</span>
+<span class="go">[(&#39;Ratio&#39;, {})]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;creator&#39;</span><span class="p">)</span>
+<span class="go">[(&#39;Firstname Lastname &#39;, {})]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;identifier&#39;</span><span class="p">)</span>
+<span class="go">[(&#39;9781416566120&#39;, {&#39;id&#39;: &#39;isbn_9781416566120&#39;})]</span>
+</pre></div>
+</div>
+<p>Optional metadata from the Dublic Core set is:</p>
+<ul class="simple">
+<li>DC:creator</li>
+<li>DC:contributor</li>
+<li>DC:publisher</li>
+<li>DC:rights</li>
+<li>DC:coverage</li>
+<li>DC:date</li>
+<li>DC:description</li>
+</ul>
+<p>This is how Dublin Core metadata is defined inside of content.opf file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dc</span><span class="p">:</span><span class="n">language</span><span class="o">&gt;</span><span class="n">en</span><span class="o">&lt;/</span><span class="n">dc</span><span class="p">:</span><span class="n">language</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">dc</span><span class="p">:</span><span class="n">identifier</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;isbn_9781416566120&quot;</span><span class="o">&gt;</span><span class="mi">9781416566120</span><span class="o">&lt;/</span><span class="n">dc</span><span class="p">:</span><span class="n">identifier</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can also have custom metadata. For instance this is how custom metadata is defined in content.opf file.
+You can define same key more then once.
+2</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;my-cover-image&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cover&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;cover-image&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cover&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>When accessing custom metadata you will use namespace ‘OPF’. Notice you will get more then one result now.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="s1">&#39;OPF&#39;</span><span class="p">,</span> <span class="s1">&#39;cover&#39;</span><span class="p">)</span>
+<span class="go">[(None, {&#39;content&#39;: &#39;my-cover-image&#39;, &#39;name&#39;: &#39;cover&#39;}),</span>
+<span class="go"> (None, {&#39;content&#39;: &#39;cover-image&#39;, &#39;name&#39;: &#39;cover&#39;})]</span>
+</pre></div>
+</div>
+<p>Check the official documentation for more info:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-opf-dcmes-optional">http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-opf-dcmes-optional</a>.</li>
+<li><a class="reference external" href="http://www.idpf.org/epub/30/spec/epub30-publications.html">http://www.idpf.org/epub/30/spec/epub30-publications.html</a></li>
+<li><a class="reference external" href="http://dublincore.org/documents/dces/">http://dublincore.org/documents/dces/</a></li>
+</ul>
+</div>
+<div class="section" id="items">
+<h3>Items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h3>
+<p>All of the resources (style sheets, images, videos, sounds, scripts and html files) are items.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_items_of_type</span><span class="p">(</span><span class="n">ebooklib</span><span class="o">.</span><span class="n">ITEM_IMAGE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fetch items by their type with <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook.get_items_of_type" title="ebooklib.epub.EpubBook.get_items_of_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook.get_items_of_type()</span></code></a>.</p>
+<p>Here is a list of current item types you can use:</p>
+<ul class="simple">
+<li>ITEM_UNKNOWN</li>
+<li>ITEM_IMAGE</li>
+<li>ITEM_STYLE</li>
+<li>ITEM_SCRIPT</li>
+<li>ITEM_NAVIGATION</li>
+<li>ITEM_VECTOR</li>
+<li>ITEM_FONT</li>
+<li>ITEM_VIDEO</li>
+<li>ITEM_AUDIO</li>
+<li>ITEM_DOCUMENT</li>
+<li>ITEM_COVER</li>
+<li>ITEM_SMIL</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cover_image</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_item_with_id</span><span class="p">(</span><span class="s1">&#39;cover-image&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fetch items by their id (if you know it) with <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook.get_item_with_id" title="ebooklib.epub.EpubBook.get_item_with_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook.get_item_with_id()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_item_with_href</span><span class="p">(</span><span class="s1">&#39;index.xhtml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fetch them by their filename with <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook.get_item_with_href" title="ebooklib.epub.EpubBook.get_item_with_href"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook.get_item_with_href()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_items_of_media_type</span><span class="p">(</span><span class="s1">&#39;image/png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fetch them by their media type with <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook.get_items_of_type" title="ebooklib.epub.EpubBook.get_items_of_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook.get_items_of_type()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">all_items</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_items</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Return all of the items with <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubBook.get_items" title="ebooklib.epub.EpubBook.get_items"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubBook.get_items()</span></code></a>. This is what you are going to use most
+of the times when handling unknown EPUB files.</p>
+<p><strong>Important to remember!</strong> Methods <em>get_item_with_id</em>, <em>get_item_with_href</em> will
+return item object. Methods <em>get_items_of_type</em>, <em>get_items_of_type</em> and <em>get_items</em> will return iterator (and not list).</p>
+<p>To get a content from existing item (regarding if it is image, style sheet or html file) you use <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubItem.get_content" title="ebooklib.epub.EpubItem.get_content"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubItem.get_content()</span></code></a>.
+For HTML items you also have <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubHtml.get_body_content" title="ebooklib.epub.EpubHtml.get_body_content"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ebooklib.epub.EpubHtml.get_body_content()</span></code></a>. What is the difference? Get_content always
+return entire content of the file while get_body_content only returns whatever is in the &lt;body&gt; part of the HTML document.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">book</span><span class="o">.</span><span class="n">get_items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">ebooklib</span><span class="o">.</span><span class="n">ITEM_DOCUMENT</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;==================================&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NAME : &#39;</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------------&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;==================================&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-epub">
+<h2>Creating EPUB<a class="headerlink" href="#creating-epub" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ebooklib</span> <span class="k">import</span> <span class="n">epub</span>
+
+<span class="n">book</span> <span class="o">=</span> <span class="n">epub</span><span class="o">.</span><span class="n">EpubBook</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>EPUB has some minimal metadata requirements which you need to fulfil. You need to define unique identifier, title of the book
+and language used inside. When it comes to language code recommended best practice is to use a controlled vocabulary such as RFC 4646
+- <a class="reference external" href="http://www.ietf.org/rfc/rfc4646.txt">http://www.ietf.org/rfc/rfc4646.txt</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">book</span><span class="o">.</span><span class="n">set_identifier</span><span class="p">(</span><span class="s1">&#39;sample123456&#39;</span><span class="p">)</span>
+<span class="n">book</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sample book&#39;</span><span class="p">)</span>
+<span class="n">book</span><span class="o">.</span><span class="n">set_language</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+
+<span class="n">book</span><span class="o">.</span><span class="n">add_author</span><span class="p">(</span><span class="s1">&#39;Aleksandar Erkalovic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also add custom metadata. First one is from the Dublic Core namespace and second one is purely custom.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">book</span><span class="o">.</span><span class="n">add_metadata</span><span class="p">(</span><span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;This is description for my book&#39;</span><span class="p">)</span>
+<span class="n">book</span><span class="o">.</span><span class="n">add_metadata</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>This is how our custom metadata will end up in the <em>content.opf</em> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dc</span><span class="p">:</span><span class="n">description</span><span class="o">&gt;</span><span class="n">This</span> <span class="ow">is</span> <span class="n">description</span> <span class="k">for</span> <span class="n">my</span> <span class="n">book</span><span class="o">&lt;/</span><span class="n">dc</span><span class="p">:</span><span class="n">description</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">meta</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;key&quot;</span><span class="o">&gt;&lt;/</span><span class="n">meta</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Chapters are represented by <a class="reference internal" href="ebooklib.html#ebooklib.epub.EpubHtml" title="ebooklib.epub.EpubHtml"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.epub.EpubHtml</span></code></a>. You must define the <em>file_name</em> and <em>title</em>. In our case
+title is going to be used when generating Table of Contents.</p>
+<p>When defining content you can define it as valid HTML file or just parts of HTML elements you have as a content. It will
+ignore whatever you have in &lt;head&gt; element.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># intro chapter</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="n">epub</span><span class="o">.</span><span class="n">EpubHtml</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Introduction&#39;</span><span class="p">,</span>
+                   <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;intro.xhtml&#39;</span><span class="p">,</span>
+                   <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
+<span class="n">c1</span><span class="o">.</span><span class="n">set_content</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Introduction&lt;/h1&gt;&lt;p&gt;Introduction paragraph.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+
+<span class="c1"># about chapter</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">epub</span><span class="o">.</span><span class="n">EpubHtml</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;About this book&#39;</span><span class="p">,</span>
+                   <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;about.xhtml&#39;</span><span class="p">)</span>
+<span class="n">c2</span><span class="o">.</span><span class="n">set_content</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;About this book&lt;/h1&gt;&lt;p&gt;This is a book.&lt;/p&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do some basic debugging to see what kind of content will end up in the book. In this case we have inserted title
+of the chapter and language definition. It would also add links to the style sheet files if we have attached them
+to this chapter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">get_content</span><span class="p">())</span>
+<span class="go">b&#39;&lt;?xml version=\&#39;1.0\&#39; encoding=\&#39;utf-8\&#39;?&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span>
+<span class="go">xmlns:epub=&quot;http://www.idpf.org/2007/ops&quot; epub:prefix=&quot;z3998: http://www.daisy.org/z3998/2012/vocab/structure/#&quot;</span>
+<span class="go">lang=&quot;en&quot; xml:lang=&quot;en&quot;&gt;\n  &lt;head&gt;\n    &lt;title&gt;Introduction&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Introduction&lt;/h1&gt;\n</span>
+<span class="go">&lt;p&gt;Introduction paragraph.&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n&#39;</span>
+</pre></div>
+</div>
+<p>Any kind of item (style sheet, image, HTML file) must be added to the book.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">book</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span>
+<span class="n">book</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can add any kind of file to the book. For instance, in this case we are adding style sheet file. We define
+filename, unique id, media_type and content for it. Just like the chapter files you need to add it to the book.
+Style sheet files could also be added to the chapter. In that case links would be automatically added to the
+chapter HTML.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;body { font-family: Times, Times New Roman, serif; }&#39;</span>
+
+<span class="n">nav_css</span> <span class="o">=</span> <span class="n">epub</span><span class="o">.</span><span class="n">EpubItem</span><span class="p">(</span><span class="n">uid</span><span class="o">=</span><span class="s2">&quot;style_nav&quot;</span><span class="p">,</span>
+                        <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;style/nav.css&quot;</span><span class="p">,</span>
+                        <span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="p">,</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+<span class="n">book</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">nav_css</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Table of the contents must be defined manually. ToC is a tuple/list of elements. You can either define link manually
+with <a class="reference internal" href="ebooklib.html#ebooklib.epub.Link" title="ebooklib.epub.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">ebooklib.epub.Link</span></code></a> or just insert item object inside. When you manually insert you can define different
+title in the ToC than in the chapter. If you just insert item object it will use whatever title you defined for
+that item when creating it.</p>
+<p>Sections are just tuple with two values. First one is title of the section and 2nd is tuple/list with subchapters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">book</span><span class="o">.</span><span class="n">toc</span> <span class="o">=</span> <span class="p">(</span><span class="n">epub</span><span class="o">.</span><span class="n">Link</span><span class="p">(</span><span class="s1">&#39;intro.xhtml&#39;</span><span class="p">,</span> <span class="s1">&#39;Introduction&#39;</span><span class="p">,</span> <span class="s1">&#39;intro&#39;</span><span class="p">),</span>
+              <span class="p">(</span>
+                <span class="n">epub</span><span class="o">.</span><span class="n">Section</span><span class="p">(</span><span class="s1">&#39;Languages&#39;</span><span class="p">),</span>
+                <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+              <span class="p">)</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+<p>So as the Spine. You can use unique id for the item or just add instance of it to the spine.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">book</span><span class="o">.</span><span class="n">spine</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nav&#39;</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>At the end we need to add NCX and Navigation tile. They will not be added automatically.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">book</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">epub</span><span class="o">.</span><span class="n">EpubNcx</span><span class="p">())</span>
+<span class="n">book</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">epub</span><span class="o">.</span><span class="n">EpubNav</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>At the end write down your book. You need to specify full path to the book, you can not write it down to the
+File Object or something else.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">epub</span><span class="o">.</span><span class="n">write_epub</span><span class="p">(</span><span class="s1">&#39;test.epub&#39;</span><span class="p">,</span> <span class="n">book</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It also accepts some of the options.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Default value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>epub2_guide</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>epub3_landmark</td>
+<td>True</td>
+</tr>
+<tr class="row-even"><td>epub3_pages</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>landmark_title</td>
+<td>“Guide”</td>
+</tr>
+<tr class="row-even"><td>pages_title</td>
+<td>“Pages”</td>
+</tr>
+<tr class="row-odd"><td>spine_direction</td>
+<td>True</td>
+</tr>
+<tr class="row-even"><td>package_direction</td>
+<td>False</td>
+</tr>
+<tr class="row-odd"><td>play_order</td>
+<td>{‘enabled’: False, ‘start_from’: 1}</td>
+</tr>
+</tbody>
+</table>
+<p>Example when overriding default options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">epub</span><span class="o">.</span><span class="n">write_epub</span><span class="p">(</span><span class="s1">&#39;test.epub&#39;</span><span class="p">,</span> <span class="n">book</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;epub3_pages&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="samples">
+<h2>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h2>
+<p>Further examples are available in <a class="reference external" href="https://github.com/aerkalov/ebooklib/tree/master/samples">https://github.com/aerkalov/ebooklib/tree/master/samples</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.html" class="btn btn-neutral float-right" title="Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to EbookLib’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Aleksandar Erkalovic.
+      
+        <span class="commit">
+          Revision <code>6a004d4a</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/ebooklib/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/ebooklib/?fromdocs=ebooklib">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/ebooklib/?fromdocs=ebooklib">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.17',
+            LANGUAGE:'en',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
